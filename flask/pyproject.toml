@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "eye-ai-flask"
+version = "0.1.0"
+description = "Eye AI Flask backend"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+flask = "^2.3.0"
+flask-cors = "^4.0.0"
+gunicorn = "^21.2.0"
+tensorflow = "2.15.0"
+numpy = "*"
+pillow = "*"
+python-dotenv = "*"
+google-generativeai = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
