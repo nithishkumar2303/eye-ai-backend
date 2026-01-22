@@ -18,6 +18,10 @@ def create_app():
     """Application factory"""
     app = Flask(__name__)
     return app
+    CORS(app, resources={r"/*": {"origins": [
+    "http://localhost:5173",
+    "https://<project>.vercel.app"
+]}})
     # Configuration
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-key-change-in-production')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///eye_ai.db')
