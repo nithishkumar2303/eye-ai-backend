@@ -12,14 +12,22 @@ prediction_bp = Blueprint('predictions', __name__, url_prefix='/predictions')
 logger = logging.getLogger(__name__)
 
 # Import your existing model loading code
-from main import model, model_loaded, device, transform, CLASS_LABELS, GRADE_DESCRIPTIONS
-
+from src.model_runtime import (
+    load_model_once,
+    model,
+    model_loaded,
+    device,
+    transform,
+    CLASS_LABELS,
+    GRADE_DESCRIPTIONS,
+)
 
 @prediction_bp.route('/predict', methods=['POST'])
 @token_required
 def predict(current_user):
     """Make a prediction and save to history"""
     try:
+        load_model_once()
         if not model_loaded:
             return jsonify({'message': 'Model not loaded'}), 503
         
